@@ -4,11 +4,14 @@ import me.zitzmanncedric.repository.HibernateSpeakerRepositoryImpl;
 import me.zitzmanncedric.repository.SpeakerRepository;
 import me.zitzmanncedric.service.SpeakerService;
 import me.zitzmanncedric.service.SpeakerServiceImpl;
+import me.zitzmanncedric.util.CalendarFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+
+import java.util.Calendar;
 
 /*
  * @ComponentScan now scans starting at specified package for autowiring
@@ -19,6 +22,18 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @ComponentScan({"me.zitzmanncedric"})
 public class AppConfig {
+
+    @Bean(name = "cal")
+    public CalendarFactory calendarFactory() {
+        CalendarFactory factory = new CalendarFactory();
+        factory.addDays(2);
+        return factory;
+    }
+
+    @Bean
+    public Calendar cal() throws Exception {
+        return calendarFactory().getObject();
+    }
 
     /*
      * Because @Bean is a Singleton, only one instance of SpeakerServiceImpl is created.

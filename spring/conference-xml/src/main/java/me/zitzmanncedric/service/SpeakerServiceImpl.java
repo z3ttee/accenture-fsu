@@ -1,26 +1,21 @@
 package me.zitzmanncedric.service;
 
 import me.zitzmanncedric.model.Speaker;
+import me.zitzmanncedric.repository.HibernateSpeakerRepositoryImpl;
 import me.zitzmanncedric.repository.SpeakerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Service("speakerService")
 public class SpeakerServiceImpl implements SpeakerService {
 
-    private SpeakerRepository repository;
+    private SpeakerRepository repository = new HibernateSpeakerRepositoryImpl();
 
     public SpeakerServiceImpl() {
-        System.out.println("SpeakerServiceImpl no args constructor");
+
     }
 
-    /*
-     * CONSTRUCTOR_INJECTION
-     */
     public SpeakerServiceImpl(SpeakerRepository repository) {
-        System.out.println("SpeakerServiceImpl repository constructor");
         this.repository = repository;
     }
 
@@ -29,13 +24,7 @@ public class SpeakerServiceImpl implements SpeakerService {
         return repository.findAll();
     }
 
-    /*
-     * SETTER_INJECTION
-     * @Autowired automatically configures repository (no method calls required from us)
-     */
-    @Autowired
-    public void setRepository(SpeakerRepository repository) {
-        System.out.println("SpeakerServiceImpl setter");
+    public void setSpeakerRepository(SpeakerRepository repository) {
         this.repository = repository;
     }
 }
