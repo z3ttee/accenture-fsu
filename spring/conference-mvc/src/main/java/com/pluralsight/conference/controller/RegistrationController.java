@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Map;
-
 @Controller
 public class RegistrationController {
 
@@ -19,7 +17,10 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addRegistration(@ModelAttribute("registration") Registration registration) {
         System.out.println(registration.getName());
-        return "registration";
+
+        // Post-Redirect-Get:
+        // Redirect back to registration -> so information will be cleared -> no re-submit
+        return "redirect:registration";
     }
 
 }
