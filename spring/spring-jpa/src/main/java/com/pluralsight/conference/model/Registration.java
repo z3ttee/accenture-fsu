@@ -1,5 +1,7 @@
 package com.pluralsight.conference.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -17,8 +19,11 @@ public class Registration {
     @NotEmpty
     private String name;
 
+    // Grab at one level and return (avoids recursive lookup loops) this needs a @JsonBackReference on the other object of the relationship
+    @JsonManagedReference
     // The mapped by string value corresponds to the field name on Course.java
-    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
+    // Fetch Type = Lazy means, that this field is populated if it is called (e.g.: via getCourses())
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Course> courses = new ArrayList<>();
 
     public Long getId() {

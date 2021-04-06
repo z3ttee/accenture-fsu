@@ -9,7 +9,7 @@ import java.util.Map;
 public class GreetingController {
 
     @GetMapping("greeting")
-    public String greeting (Map<String, Object> model) {
+    public String greeting(Map<String, Object> model) {
         model.put("message", "Hello Bryan");
         return "greeting";
     }

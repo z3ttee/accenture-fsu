@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -30,6 +31,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         courseRepository.save(course);
         return registration;
+    }
+
+    @Override
+    public List<Registration> findAll() {
+        return registrationRepository.findAll();
     }
 
 }
