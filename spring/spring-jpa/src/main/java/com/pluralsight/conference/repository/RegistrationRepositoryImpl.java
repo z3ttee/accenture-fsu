@@ -16,7 +16,12 @@ public class RegistrationRepositoryImpl implements RegistrationRepository {
 
     @Override
     public Registration save(Registration registration) {
-        entityManager.persist(registration);
+        if(registration.getId() == null) {
+            entityManager.persist(registration);
+        } else {
+            registration = entityManager.merge(registration);
+        }
+
         return registration;
     }
 

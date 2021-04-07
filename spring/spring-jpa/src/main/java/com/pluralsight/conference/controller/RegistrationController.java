@@ -46,12 +46,22 @@ public class RegistrationController {
         if(result.hasErrors()) {
             System.out.println("There were errors");
             return "registration";
+        } else {
+            service.addRegistration(registration);
         }
 
         System.out.println("Registration: " + registration.getName());
-        service.addRegistration(registration);
-
         return "redirect:registration";
+    }
+
+    @PostMapping("registration/update")
+    public @ResponseBody Registration updateRegistration(@Valid @ModelAttribute ("registration") Registration registration, BindingResult result) {
+        if(result.hasErrors()) {
+            System.out.println("There were errors");
+            return null;
+        } else {
+            return service.addRegistration(registration);
+        }
     }
 
 }

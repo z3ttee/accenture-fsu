@@ -25,12 +25,16 @@ public class RegistrationServiceImpl implements RegistrationService {
     public Registration addRegistration(Registration registration) {
         registration = registrationRepository.save(registration);
 
-        Course course = new Course();
-        course.setName("Introductory Course");
-        course.setDescription("Every attendee must complete the intro.");
-        course.setRegistration(registration);
+        // Default course only added after new registration
+        if(registration.getId() == null) {
+            Course course = new Course();
+            course.setName("Introductory Course");
+            course.setDescription("Every attendee must complete the intro.");
+            course.setRegistration(registration);
 
-        courseRepository.save(course);
+            courseRepository.save(course);
+        }
+
         return registration;
     }
 
