@@ -1,5 +1,11 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>{{ pageTitle }}</h1>
-  <pm-products></pm-products>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand">{{ pageTitle }}</a>
+  <ul class="nav nav-pills">
+    <li><a class="nav-link" routerLink="/">Home</a></li>
+    <li><a class="nav-link" routerLink="/products">Products</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
