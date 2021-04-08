@@ -13,9 +13,18 @@ export class ProductListComponent implements OnInit {
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    listFilter: string = "";
 
     products: IProduct[] = products
+
+    private _listFilter: string = "";
+
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        console.log("Filter: " + value);
+    }
 
     public toggleImage(): void {
         this.showImage = !this.showImage;
