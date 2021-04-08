@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import products from "../../api/products/products.json"
 import { IProduct } from "./product";
+import { ProductService } from "./product.service";
 
 @Component({
     selector: "pm-products",
@@ -14,10 +14,12 @@ export class ProductListComponent implements OnInit {
     imageMargin: number = 2;
     showImage: boolean = false;
 
-    products: IProduct[] = products;
+    products: IProduct[] = [];
     filteredProducts: IProduct[] = [];
 
     private _listFilter: string = "";
+
+    constructor(private productService: ProductService){ }
 
     get listFilter(): string {
         return this._listFilter;
@@ -37,7 +39,8 @@ export class ProductListComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.listFilter = ""
+        this.products = this.productService.getProducts();
+        this.filteredProducts = this.products;
     }
 
     onRatingClicked(message: string): void {
