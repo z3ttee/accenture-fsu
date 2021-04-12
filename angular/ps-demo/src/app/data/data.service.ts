@@ -14,4 +14,8 @@ export class DataService {
       //return of(userSettings);
       return this.http.post("https://3460935248ae5fd66cccf0095db6da40.m.pipedream.net/", userSettings);
   }
+
+  getSubscriptionTypes(): Observable<any> {
+    return of(["Monthly", "Annual", "Lifetime"])
+  }
 }
