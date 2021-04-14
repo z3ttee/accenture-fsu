@@ -6,6 +6,7 @@ import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
+  
 
   private _users: BehaviorSubject<User[]>
 
@@ -34,5 +35,9 @@ export class UserService {
       }, 
       error => console.log(error)
     );
+  }
+
+  public getById(id: number): User {
+    return this.dataStore.users.find(user => user.id = id)
   }
 }
