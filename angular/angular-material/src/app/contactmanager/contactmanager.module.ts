@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserService } from "./services/user.service"
 import { HttpClientModule } from '@angular/common/http';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   { path: "", component: ContactmanagerAppComponent, children: [
@@ -26,7 +27,8 @@ const routes: Routes = [
     ContactmanagerAppComponent,
     ToolbarComponent,
     MainContentComponent,
-    SidenavComponent
+    SidenavComponent,
+    NotesComponent
   ],
   imports: [
     CommonModule,
