@@ -38,6 +38,9 @@ export class UserService {
   }
 
   public getById(id: number): User {
-    return this.dataStore.users.find(user => user.id = id)
+    return this.dataStore.users.find(user => {
+      //console.log(user.id, user.id == id)
+      if(user.id == id) return user;
+    })
   }
 }
