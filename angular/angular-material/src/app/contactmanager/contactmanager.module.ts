@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserService } from "./services/user.service"
 import { HttpClientModule } from '@angular/common/http';
 import { NotesComponent } from './components/notes/notes.component';
+import { NewContactDialogComponent } from './dialogs/new-contact/new-contact-dialog/new-contact-dialog.component';
 
 const routes: Routes = [
   { path: "", component: ContactmanagerAppComponent, children: [
@@ -28,7 +29,8 @@ const routes: Routes = [
     ToolbarComponent,
     MainContentComponent,
     SidenavComponent,
-    NotesComponent
+    NotesComponent,
+    NewContactDialogComponent
   ],
   imports: [
     CommonModule,
