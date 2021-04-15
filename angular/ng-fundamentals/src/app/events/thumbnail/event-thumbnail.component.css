@@ -1,0 +1,11 @@
+.thumbnail {
+    height: 210px;
+}
+
+.green {
+    color: rgb(95, 165, 63);
+}
+
+.bold {
+    font-weight: bold;
+}
