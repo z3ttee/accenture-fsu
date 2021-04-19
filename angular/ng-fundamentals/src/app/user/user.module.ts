@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./login.component";
 import { ProfileComponent } from "./profile.component";
@@ -15,6 +15,7 @@ const USER_ROUTES: Routes = [
         // "Sub-Modules" need the CommonModule import
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(USER_ROUTES)
     ],
     declarations: [
