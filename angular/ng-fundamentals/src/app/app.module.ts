@@ -12,11 +12,12 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Error404Component } from './errors/404.component';
+import { EventRouteActivatorGuard } from './events/event-route-activator.guard';
 
 const ROUTES: Routes = [
   { path: "", component: EventListComponent },
   { path: "event/new", component: CreateEventComponent },   // ORDER IS IMPORTANT, FIRST DECLARED GET FIRST PROCESSED
-  { path: "event/:id", component: EventDetailsComponent },
+  { path: "event/:id", component: EventDetailsComponent, canActivate: [EventRouteActivatorGuard] },
 
   { path: "404", component: Error404Component },
 
