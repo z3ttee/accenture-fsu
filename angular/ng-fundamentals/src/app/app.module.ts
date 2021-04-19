@@ -23,7 +23,7 @@ const ROUTES: Routes = [
   { path: "", component: EventListComponent, resolve: {
     events: EventListResolver
   }},
-  
+
   { path: "event/new", component: CreateEventComponent, canDeactivate: ['canDeactiveCreateEvent'] },   // ORDER IS IMPORTANT, FIRST DECLARED GET FIRST PROCESSED
   { path: "event/:id", component: EventDetailsComponent, canActivate: [EventRouteActivatorGuard] },
   { path: "404", component: Error404Component },

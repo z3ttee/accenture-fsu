@@ -5,3 +5,7 @@
 #searchForm {
     margin-right: 10px;
 }
+
+li > a.active {
+    color: #f97924;
+}
