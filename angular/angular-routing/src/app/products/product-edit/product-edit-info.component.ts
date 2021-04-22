@@ -19,6 +19,10 @@ export class ProductEditInfoComponent implements OnInit {
     this.route.parent.data.subscribe(data => {
       const receivedData: ProductResolved = data["resolvedData"];
 
+      if(this.productForm) {
+        this.productForm.reset();
+      }
+
       this.product = receivedData.product;
       this.errorMessage = receivedData.error;
     })
