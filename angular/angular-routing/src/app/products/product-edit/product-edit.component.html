@@ -6,8 +6,8 @@
   <div class="card-body" *ngIf="product">
     <div class="wizard">
       <!-- This is a relative path. Absolute paths start with a / -->
-      <a [routerLink]="['info']">Basic Information</a>
-      <a [routerLink]="['tags']">Search Tags</a>
+      <a [routerLink]="['info']" routerLinkActive="active">Basic Information <i [ngClass]="{'fa fa-exclamation': !isValid('info')}"></i></a>
+      <a [routerLink]="['tags']" routerLinkActive="active">Search Tags <i [ngClass]="{'fa fa-exclamation': !isValid('tags')}"></i></a>
     </div>
 
     <router-outlet></router-outlet>
